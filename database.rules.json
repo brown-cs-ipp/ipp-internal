@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "partners": {
+      ".read": true,
+      ".write": true,
+    },
+    "partner-application": {
+      "$company_id": {
+        ".read": true,
+        ".write": "root.child('partner-application').child($company_id).exists() && !root.child('partners').child($company_id).exists()" // add auth? 
+      },
+        ".read": "auth !== null" // should add validation about IPP admin here
+  	},
+	}
+}
