@@ -4,10 +4,12 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import Protected from "./views/Protected";
+import Partners from "./views/Partners";
 import Error from "./views/Error";
 import Login from "./views/Login";
-import { isLoggedIn } from "./firebase/utils";
+import Home from "./views/Home";
+import Applications from "./views/Applications";
+import { getApplications, isLoggedIn } from "./firebase/utils";
 
 const router = createHashRouter([
   {
@@ -16,13 +18,26 @@ const router = createHashRouter([
     errorElement: <Error />,
     children: [
       {
-        index: true,
-        element: <Login />,
+        path: "admin",
+        element: <Home />,
+        loader: isLoggedIn,
+        children: [
+          {
+            path: "partners",
+            element: <Partners />,
+          },
+          {
+            path: "applications",
+            element: <Applications />,
+            loader: () => {
+              return getApplications()
+            }
+          },
+        ],
       },
       {
-        path: "protected",
-        element: <Protected />,
-        loader: isLoggedIn,
+        index: true,
+        element: <Login />,
       },
     ],
   },
