@@ -17,12 +17,11 @@ export const firebaseSignIn = async (info) => {
 };
 
 export const isLoggedIn = () => {
-  // if (currentUser) {
-  //   return { user: currentUser };
-  // } else {
-  //   return redirect("/");
-  // }
-  return null;
+  if (currentUser) {
+    return { user: currentUser };
+  } else {
+    return redirect("/");
+  }
 };
 
 export const getApplications = async () => {

@@ -1,17 +1,18 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
-export default function Partners() {
+export default function Welcome() {
   return (
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        height: "100%",
+        width: "100%",
       }}
     >
-      <Typography variant="h4">Partners Placeholder!</Typography>
+      <Typography variant="h3">Welcome to IPP Admin Console</Typography>
     </div>
   );
 }

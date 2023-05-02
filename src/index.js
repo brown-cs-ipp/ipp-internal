@@ -10,6 +10,7 @@ import Login from "./views/Login";
 import Home from "./views/Home";
 import Applications from "./views/Applications";
 import { getApplications, isLoggedIn } from "./firebase/utils";
+import Welcome from "./views/Welcome";
 
 const router = createHashRouter([
   {
@@ -22,6 +23,10 @@ const router = createHashRouter([
         element: <Home />,
         loader: isLoggedIn,
         children: [
+          {
+            index: true,
+            element: <Welcome />,
+          },
           {
             path: "partners",
             element: <Partners />,
